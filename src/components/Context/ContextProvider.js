@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import allProducts from "../../Data";
+import offerCode from "../../Offer";
 import { sendPrice } from "../../Offer";
 
 const initialState = {
@@ -9,7 +10,7 @@ const initialState = {
   totalPrice: 0,
   totalPriceAfterOffer: 0,
   offerPrice: 0,
-  totalPriceFainal: 0,
+  totalPriceFinal: 0,
   isFavorite: false,
   isEnterOfferCode: false,
   offerMessage: ""
@@ -21,8 +22,8 @@ const sumPrice = (items, isOffer) => {
   }, 0);
 
   if (isOffer) {
-    const offerPrice = totalPrice;
-    const totalPriceAfterOffer = totalPrice;
+    const offerPrice = (totalPrice * offerCode.disCount) / 100;
+    const totalPriceAfterOffer = totalPrice - offerPrice;
 
     return {
       totalPrice,
@@ -37,15 +38,15 @@ const sumPrice = (items, isOffer) => {
 
 // calc Price With shopping cost
 const sumPriceWithSend = (totalPrice, offerPrice = 0) => {
-  let totalPriceFainal = null;
+  let totalPriceFinal = null;
 
-  if (totalPrice - offerPrice <= 100_000) {
-    totalPriceFainal = totalPrice + sendPrice - offerPrice;
+  if (totalPrice - offerPrice <= 100000) {
+    totalPriceFinal = totalPrice + sendPrice - offerPrice;
   } else {
-    totalPriceFainal = totalPrice - offerPrice;
+    totalPriceFinal = totalPrice - offerPrice;
   }
 
-  return { totalPriceFainal };
+  return { totalPriceFinal };
 };
 
 const reduce = (state, action) => {
@@ -140,7 +141,20 @@ const reduce = (state, action) => {
         ...state
       };
     }
+    case "OFFER_CODE": {
+      if (offerCode.code === action.payload) {
+        state.isEnterOfferCode = true;
+        state.offerMessage = "Discount Applied";
+      } else {
+        state.offerMessage = "The entered code is not valid";
+      }
+      return {
+        ...state,
+        ...sumPrice(state.basket, state.isEnterOfferCode)
+      };
+    }
     default:
+      return state;
   }
 };
 

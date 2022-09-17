@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react";
 import "./Header.css";
+import { RiLoginBoxLine } from "react-icons/ri";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import { ProductContext, ProductDispath } from "../Context/ContextProvider";
 import { Link } from "react-router-dom";
@@ -36,6 +37,9 @@ function Header() {
               <span className="badge_mark">{state.favorites.length}</span>
             )}
           </Link>
+          <Link to={"/Login"} className="shoppe_icon_box">
+            <RiLoginBoxLine className="shop_icon" />
+          </Link>        
         </div>
       </nav>
     </header>
