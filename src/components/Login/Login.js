@@ -13,7 +13,7 @@ function Login() {
 
   // Fetch all users from db
   useEffect(() => {
-    fetch("https://modern-movers-backend.herokuapp.com/users")
+    fetch("https://store-3la-server.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => {
         setUserData(data);
@@ -70,7 +70,7 @@ function Login() {
           onChange={handlePasswordChange}
         />
         <button
-          className="border-solid rounded-md items-center text-xl p-1 px-14 h-9 w-78 mt-4 mx-auto bg-cyan-500"
+          className="button"
           type="submit"
         >
           Log in

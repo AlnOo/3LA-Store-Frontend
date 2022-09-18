@@ -26,6 +26,17 @@
   gap: 20px;
 }
 
+.signup {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: #fff;
+  font-size: 20px;
+  transition: all 0.3s;
+}
+
 .shoppe_icon_box,
 .mark_icon_box {
   position: relative;

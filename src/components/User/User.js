@@ -39,7 +39,7 @@ function User() {
       alert("Password must be a minimum of 8 characters");
     } else {
       // fetch users and send a post request for a new user
-      fetch("https://modern-movers-backend.herokuapp.com/users", {
+      fetch("https://store-3la-server.herokuapp.com/users", {
         method: "POST",
         body: JSON.stringify({ signupFormData }),
         headers: {
