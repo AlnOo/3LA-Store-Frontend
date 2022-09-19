@@ -24,7 +24,7 @@ Feature
 - Show Number of products In Badge
 - calculation Total Price
 
-Find link to the live site here  https://github.com/AlnOo/3LA-Furniture-Shop
+Find link to the live site here  https://github.com/AlnOo/3LA-Furniture-Shop for front-end and https://store-3la-server.herokuapp.com/
 Project screen shots: ![home page!](public/images/Snapshot.jpeg)
 Project screen shots: ![home page!](public/images/snapshot2.jpeg)
 
